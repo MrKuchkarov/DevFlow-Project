@@ -44,10 +44,9 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
             <SignedOut>
                 <SignInButton/>
             </SignedOut>
-            <SignedIn>
-                <UserButton/>
-            </SignedIn>
-            <ThemeProvider>{children}</ThemeProvider>
+            <ThemeProvider>
+                {children}
+            </ThemeProvider>
         </ClerkProvider>
         </body>
         </html>
