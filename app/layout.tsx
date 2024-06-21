@@ -21,7 +21,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-    title: 'Next.js 13 with Clerk',
+    title: 'NextJS 13 with Clerk',
     description: 'A community-driven platform for asking and answering programming questions',
     icons: {
         icon: '/assets/images/site-logo.svg',
