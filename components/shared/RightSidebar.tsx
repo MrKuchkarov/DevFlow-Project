@@ -4,22 +4,22 @@ import Image from "next/image";
 import RenderTag from "@/components/shared/RenderTag";
 
 type hotQuestionsT = {
-    _id: number;
+    _id: string;
     title: string
 }[];
 const hotQuestions: hotQuestionsT = [
-    {_id: 1, title: 'How Next is different from other JavaScript frameworks?'},
-    {_id: 3, title: 'What is the process of installing Next JS?'},
-    {_id: 5, title: 'Write a Hello World Program in Next JS?'},
-    {_id: 7, title: 'What are the benefits of using Next JS?'},
+    {_id: '1', title: 'How Next is different from other JavaScript frameworks?'},
+    {_id: '3', title: 'What is the process of installing Next JS?'},
+    {_id: '5', title: 'Write a Hello World Program in Next JS?'},
+    {_id: '7', title: 'What are the benefits of using Next JS?'},
 ];
 
 const popularTags = [
-    {_id: 1, name: 'JavaScript', totalQuestions: 5,},
-    {_id: 3, name: 'React ', totalQuestions: 6,},
-    {_id: 5, name: 'NextJS', totalQuestions: 1,},
-    {_id: 7, name: 'NodeJS', totalQuestions: 3,},
-    {_id: 9, name: 'Css  ', totalQuestions: 3,},
+    {_id: '1', name: 'JavaScript', totalQuestions: 5,},
+    {_id: '3', name: 'React ', totalQuestions: 6,},
+    {_id: '5', name: 'NextJS', totalQuestions: 1,},
+    {_id: '7', name: 'NodeJS', totalQuestions: 3,},
+    {_id: '9', name: 'Css  ', totalQuestions: 3,},
 ]
 const RightSidebar = () => {
 
