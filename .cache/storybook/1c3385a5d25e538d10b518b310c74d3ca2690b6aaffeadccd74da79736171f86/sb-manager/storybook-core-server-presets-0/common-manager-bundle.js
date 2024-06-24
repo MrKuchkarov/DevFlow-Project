@@ -1,0 +1,1 @@
+import '/Users/mr.kuchkorov/Desktop/Projects/nextjs-traing-project/node_modules/@storybook/core-server/dist/presets/common-manager.js';

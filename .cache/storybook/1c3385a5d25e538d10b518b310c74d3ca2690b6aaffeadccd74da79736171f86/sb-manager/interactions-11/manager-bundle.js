@@ -1,0 +1,1 @@
+import '/Users/mr.kuchkorov/Desktop/Projects/nextjs-traing-project/node_modules/@storybook/addon-interactions/dist/manager.js';
