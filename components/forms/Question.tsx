@@ -1,5 +1,5 @@
 "use client"
-import React, {useRef, useState} from 'react'; // добавлен импорт React
+import React, {useRef, useState} from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -55,10 +55,10 @@ const Question = ({ mongoUserId }: Props) => {
                 author: JSON.parse(mongoUserId),
                 path: pathname,
             });
-            //navigate to home page
+            // navigate to home page
             router.push('/')
         } catch (error) {
-            console.error('Error creating question:', error); // добавлено логирование ошибки
+            console.error('Error creating question:', error); // added space after comment marker
         } finally {
             setIsSubmitting(false)
         }
@@ -159,8 +159,8 @@ const Question = ({ mongoUserId }: Props) => {
                                 <Editor
                                     apiKey={process.env.NEXT_PUBLIC_TINY_EDITOR_API_KEY}
                                     onInit={(_evt, editor) =>
-                                        //@ts-ignore
-                                        (editorRef.current = editor)} // изменено присвоение
+                                        // @ts-ignore
+                                        (editorRef.current = editor)} // fixed assignment issue
                                     onBlur={field.onBlur}
                                     onEditorChange={(content) => field.onChange(content)}
                                     initialValue=""
