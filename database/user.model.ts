@@ -9,7 +9,7 @@ export type TUser = Document & {
     bio?: string;
     picture: string;
     location?: string;
-    portfilioWebsite?: string;
+    portfolioWebsite?: string;
     reputation?: number;
     saved: Schema.Types.ObjectId[];
     joinedAt: Date;
@@ -24,7 +24,7 @@ const UserSchema = new Schema({
     bio: { type: String },
     picture: { type: String, required: true },
     location: { type: String },
-    portfilioWebsite: { type: String },
+    portfolioWebsite: { type: String },
     reputation: { type: Number, default: 0 },
     saved: [{ type: Schema.Types.ObjectId, ref: 'Question' }],
     joinedAt: { type: Date, default: Date.now }
