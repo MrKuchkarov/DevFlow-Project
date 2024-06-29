@@ -6,6 +6,7 @@ import TTag from "@/database/tag.model";
 import TUser from "@/database/user.model";
 import {CreateQuestionParams, GetQuestionsParams} from "@/lib/actions/shared.types";
 import {revalidatePath} from "next/cache";
+import Tag from "@/database/tag.model";
 
 export async function getQuestions(params: GetQuestionsParams) {
 
