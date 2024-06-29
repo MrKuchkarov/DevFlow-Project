@@ -129,7 +129,7 @@ export type GetAllUsersParams = {
 
 export type UpdateUserParams = {
     clerkId: string;
-    updateData: Partial<IUser>;
+    updateData: Partial<TUser>;
     path: string;
 }
 
