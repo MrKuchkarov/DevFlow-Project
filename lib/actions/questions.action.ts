@@ -2,6 +2,7 @@
 
 import {connectToDataBase} from "@/lib/mongoose";
 import Question from "@/database/question.model";
+// eslint-disable-next-line import/no-duplicates
 import TTag from "@/database/tag.model";
 import TUser from "@/database/user.model";
 import {CreateQuestionParams, GetQuestionsParams} from "@/lib/actions/shared.types";
