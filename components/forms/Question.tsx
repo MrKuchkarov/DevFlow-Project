@@ -1,5 +1,5 @@
 "use client"
-import {useRef, useState} from 'react';
+import React, {useRef, useState} from 'react'; // добавлен импорт React
 import { Editor } from '@tinymce/tinymce-react';
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -58,20 +58,20 @@ const Question = ({ mongoUserId }: Props) => {
             //navigate to home page
             router.push('/')
         } catch (error) {
-
+            console.error('Error creating question:', error); // добавлено логирование ошибки
         } finally {
             setIsSubmitting(false)
         }
     }
 
     const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, field: any) => {
-        if(e.key === 'Enter' && field.name === 'tags') {
+        if (e.key === 'Enter' && field.name === 'tags') {
             e.preventDefault();
 
             const tagInput = e.target as HTMLInputElement;
             const tagValue = tagInput.value.trim();
 
-            if(tagValue !== '') {
+            if (tagValue !== '') {
                 if (tagValue.length > 15) {
                     return form.setError('tags', {
                         type: 'required',
@@ -102,7 +102,7 @@ const Question = ({ mongoUserId }: Props) => {
                 <FormField
                     control={form.control}
                     name="title"
-                    render={({field}) => (
+                    render={({ field }) => (
                         <FormItem
                             className='flex w-full flex-col'
                         >
@@ -110,11 +110,11 @@ const Question = ({ mongoUserId }: Props) => {
                                 className='paragraph-semibold text-dark400_light800'
                             >
                                 Question Title
-                                    <span
-                                        className='text-primary-500'
-                                    >
-                                        *
-                                    </span>
+                                <span
+                                    className='text-primary-500'
+                                >
+                                    *
+                                </span>
                             </FormLabel>
                             <FormControl
                                 className='mt-3.5'
@@ -139,7 +139,7 @@ const Question = ({ mongoUserId }: Props) => {
                 <FormField
                     control={form.control}
                     name="explanation"
-                    render={({field}) => (
+                    render={({ field }) => (
                         <FormItem
                             className='flex w-full flex-col gap-3'
                         >
@@ -150,8 +150,8 @@ const Question = ({ mongoUserId }: Props) => {
                                 <span
                                     className='text-primary-500'
                                 >
-                                        *
-                                    </span>
+                                    *
+                                </span>
                             </FormLabel>
                             <FormControl
                                 className='mt-3.5'
@@ -160,7 +160,7 @@ const Question = ({ mongoUserId }: Props) => {
                                     apiKey={process.env.NEXT_PUBLIC_TINY_EDITOR_API_KEY}
                                     onInit={(_evt, editor) =>
                                         //@ts-ignore
-                                        editorRef.current = editor}
+                                        (editorRef.current = editor)} // изменено присвоение
                                     onBlur={field.onBlur}
                                     onEditorChange={(content) => field.onChange(content)}
                                     initialValue=""
@@ -193,7 +193,7 @@ const Question = ({ mongoUserId }: Props) => {
                 <FormField
                     control={form.control}
                     name="tags"
-                    render={({field}) => (
+                    render={({ field }) => (
                         <FormItem
                             className='flex w-full flex-col'
                         >
@@ -204,8 +204,8 @@ const Question = ({ mongoUserId }: Props) => {
                                 <span
                                     className='text-primary-500'
                                 >
-                                        *
-                                    </span>
+                                    *
+                                </span>
                             </FormLabel>
                             <FormControl
                                 className='mt-3.5'
