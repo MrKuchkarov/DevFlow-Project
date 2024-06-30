@@ -8,13 +8,11 @@ import Question from "@/database/question.model";
 
 export async function getUserById(params: any) {
     try {
-        connectToDataBase();
+        await connectToDataBase();
 
         const { userId } = params;
 
-        const user = await User.findOne({ clerkId: userId });
-
-        return user;
+        return await User.findOne({ clerkId: userId });
     } catch (error) {
         console.log(error);
         throw error;
@@ -23,11 +21,9 @@ export async function getUserById(params: any) {
 
 export async function createUser(userData: CreateUserParams) {
     try {
-        connectToDataBase();
+        await connectToDataBase();
 
-        const newUser = await User.create(userData)
-
-        return newUser;
+        return await User.create(userData)
     } catch (error) {
         console.log(error);
         throw error;
@@ -36,7 +32,7 @@ export async function createUser(userData: CreateUserParams) {
 
 export async function updateUser(params: UpdateUserParams) {
     try {
-        connectToDataBase();
+        await connectToDataBase();
 
         const { clerkId, updateData, path } = params;
 
@@ -53,14 +49,15 @@ export async function updateUser(params: UpdateUserParams) {
 
 export async function deleteUser(params: DeleteUserParams) {
     try {
-        connectToDataBase();
+        await connectToDataBase();
 
         const {clerkId} = params;
 
         const user = await User.findOneAndDelete({clerkId});
 
         if (!user) {
-            throw new Error('User not found')
+            console.error('User not found');
+            return null;
         }
 
         // Delete user from database
@@ -75,9 +72,7 @@ export async function deleteUser(params: DeleteUserParams) {
 
         // TODO: delete user answers, comments, etc.
 
-        const deletedUser = await User.findByIdAndDelete(user._id);
-
-        return deletedUser
+        return await User.findByIdAndDelete(user._id);
     } catch (error) {
         console.log(error);
         throw error;
