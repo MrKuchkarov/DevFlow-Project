@@ -2,11 +2,11 @@
 
 import {connectToDataBase} from "@/lib/mongoose";
 import User from "@/database/user.model";
-import {CreateUserParams, DeleteUserParams, UpdateUserParams} from "@/lib/actions/shared.types";
+import {CreateUserParams, DeleteUserParams, GetUserByIdParams, UpdateUserParams} from "@/lib/actions/shared.types";
 import {revalidatePath} from "next/cache";
 import Question from "@/database/question.model";
 
-export async function getUserById(params: any) {
+export async function getUserById(params: GetUserByIdParams) {
     try {
         await connectToDataBase();
 

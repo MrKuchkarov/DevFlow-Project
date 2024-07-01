@@ -2,8 +2,8 @@
 import { Webhook } from 'svix'
 import { headers } from 'next/headers'
 import { WebhookEvent } from '@clerk/nextjs/server'
-import {createUser, updateUser, deleteUser} from "@/lib/actions/user.action";
-import {NextResponse} from "next/server";
+import { createUser, updateUser, deleteUser } from "@/lib/actions/user.action";
+import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
 
@@ -66,12 +66,13 @@ export async function POST(req: Request) {
 
         const mongoUser = await createUser({
             clerkId: id,
-            name: `${first_name}${last_name ? `${last_name}` : ''}`,
+            name: `${first_name}${last_name ? ` ${last_name}` : ''}`,
             username: username!,
             email: email_addresses[0].email_address,
             picture: image_url,
         })
 
+        console.log('User created:', mongoUser);
         return NextResponse.json({ message: 'OK', user: mongoUser })
     }
 
@@ -87,7 +88,7 @@ export async function POST(req: Request) {
         const mongoUser = await updateUser({
             clerkId: id,
             updateData: {
-                name: `${first_name}${last_name ? `${last_name}` : ''}`,
+                name: `${first_name}${last_name ? ` ${last_name}` : ''}`,
                 username: username!,
                 email: email_addresses[0].email_address,
                 picture: image_url,
@@ -95,6 +96,7 @@ export async function POST(req: Request) {
             path: `/profile/${id}`
         })
 
+        console.log('User updated:', mongoUser);
         return NextResponse.json({ message: 'OK', user: mongoUser })
     }
 
@@ -105,6 +107,7 @@ export async function POST(req: Request) {
             clerkId: id!,
         })
 
+        console.log('User deleted:', deletedUser);
         return NextResponse.json({ message: 'OK', user: deletedUser })
     }
 

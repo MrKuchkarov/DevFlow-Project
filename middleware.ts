@@ -1,7 +1,8 @@
-import {clerkMiddleware, createRouteMatcher} from "@clerk/nextjs/server";
+import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 
 const isProtectedRoute = createRouteMatcher([
     '/ask-question(.*)',
+    '/api/webhooks(.*)'  // Добавляем путь для webhook
 ]);
 
 export default clerkMiddleware((auth, req) => {
@@ -9,5 +10,5 @@ export default clerkMiddleware((auth, req) => {
 });
 
 export const config = {
-    matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"],
+    matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)", "/api/webhooks(.*)"],
 };
